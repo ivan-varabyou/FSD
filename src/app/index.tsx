@@ -1,12 +1,12 @@
-import "./styles/index.scss";
+import { Routing } from "pages";
 import { withProviders } from "./providers";
-import Routing from "../pages/";
+import './index.scss';
 
-function App() {
+const App = () => {
   return (
-    <>
+    <div className="app">
       <Routing />
-    </>
+    </div>
   );
 }
 

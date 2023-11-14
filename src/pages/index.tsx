@@ -1,15 +1,16 @@
+// Либо использовать @loadable/component, в рамках туториала - некритично
 import { lazy } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
-const TestPage = lazy(() => import("./test"));
+const TasksListPage = lazy(() => import("./tasks-list"));
+const TaskDetailsPage = lazy(() => import("./task-details"));
 
-const Routing = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<TestPage />} />
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
-  );
+export const Routing = () => {
+    return (
+        <Switch>
+            <Route exact path="/" component={TasksListPage} />
+            <Route exact path="/:taskId" component={TaskDetailsPage} />
+            <Redirect to="/" />
+        </Switch>
+    );
 };
-
-export default Routing;
